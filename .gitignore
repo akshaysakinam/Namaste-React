@@ -2,3 +2,6 @@
 /part-02-Igniting-our-app/dist
 /part-02-Igniting-our-app/.parcel-cache
 /node_modules
+/part-03-Laying-the-foundation/node_modules
+/part-03-Laying-the-foundation/dist
+/part-03-Laying-the-foundation/.parcel-cache
