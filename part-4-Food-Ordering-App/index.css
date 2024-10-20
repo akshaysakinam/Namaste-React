@@ -1,4 +1,4 @@
-.body    {
+.body {
   width: 80%;
   margin: 0 auto;
   /* background-color: #f5f6fa; */
@@ -215,4 +215,10 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+/* Filter Button Container */
+.filter-btn {
+  margin: 8px;
+  cursor: pointer;
 }
