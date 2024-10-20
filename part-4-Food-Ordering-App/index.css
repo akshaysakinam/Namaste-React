@@ -1,0 +1,218 @@
+.body    {
+  width: 80%;
+  margin: 0 auto;
+  /* background-color: #f5f6fa; */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease;
+}
+
+.header:hover {
+  background-color: #f8f8f8;
+}
+
+.logo {
+  width: 100px;
+  transition: transform 0.3s ease;
+}
+
+.header:hover .logo {
+  transform: rotate(-5deg) scale(1.1);
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+}
+
+.nav-items > ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-items > ul > li {
+  margin: 0 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-items > ul > li:hover {
+  color: #ffbf00;
+}
+
+.nav-items > ul > li::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #ffbf00;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav-items > ul > li:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav-items > ul > li:last-child {
+  background-color: #ffbf00;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-items > ul > li:last-child:hover {
+  background-color: #ff9000;
+  transform: scale(1.05);
+}
+
+/* Card component */
+.restaurant-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.restaurant-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+.image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  transition: transform 0.3s ease-in-out;
+}
+
+.restaurant-card:hover .image {
+  transform: scale(1.1);
+}
+
+.restaurant-details {
+  padding: 15px;
+  text-align: center;
+}
+
+.ratings-container {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.rating {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffbf00;
+}
+
+.out-of {
+  font-size: 16px;
+  color: #999;
+  margin-left: 5px;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.cuisine {
+  font-size: 16px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Add a subtle glow effect */
+.restaurant-card:hover .name,
+.restaurant-card:hover .cuisine {
+  text-shadow: 0 0 10px rgba(255, 191, 0, 0.5);
+}
+
+/* body */
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.search-container {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 25px;
+  border: 2px solid #ddd;
+  outline: none;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.search-input:focus {
+  border-color: #ffbf00;
+  box-shadow: 0 0 10px rgba(255, 191, 0, 0.5);
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.search-container::after {
+  content: "🔍";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #aaa;
+}
+
+.restaurant-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
