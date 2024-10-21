@@ -2,9 +2,9 @@ import { CDN_URL } from "../utils/constants";
 
 const RestaurantCard = (props) => {
     const { info } = props
-
-
-    console.log(info)
+    //or
+    // const { info: { info: innerInfo } } = props
+    // console.log(innerInfo)
 
     return (
         <div className="restaurant-card">

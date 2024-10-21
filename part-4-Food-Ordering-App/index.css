@@ -269,3 +269,85 @@
 .search-container > button:active {
   transform: scale(0.98);
 }
+
+/* Shimmer container matching restaurant card */
+.shimmer-wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+.shimmer-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 60px;
+  align-items: center;
+  padding: 20px;
+}
+.shimmer-card {
+  display: flex;
+
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px; /* Matching the width of the restaurant-card */
+  height: 400px; /* Same height as the card */
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  margin: 20px; /* Matches the margin of cards */
+  padding: 0;
+}
+
+/* Shimmer image placeholder matching the image-container */
+.shimmer-image {
+  width: 100%;
+  height: 200px; /* Same height as the image in the restaurant-card */
+  background-color: #e0e0e0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer for the text sections */
+.shimmer-text {
+  height: 20px;
+  background-color: #e0e0e0;
+  margin: 10px 15px;
+  border-radius: 5px;
+}
+
+/* Shimmer variations for different text lengths */
+.shimmer-text.short {
+  width: 50%;
+}
+
+.shimmer-text.medium {
+  width: 80%;
+}
+
+.shimmer-text.long {
+  width: 100%;
+}
+
+/* Shimmer effect animation */
+.shimmer {
+  background: linear-gradient(to right, #f0f0f0 0%, #e0e0e0 50%, #f0f0f0 100%);
+  background-size: 1000px 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  animation: shimmer-animation 1.5s infinite;
+}
+
+/* Shimmer animation for smooth transition */
+@keyframes shimmer-animation {
+  0% {
+    background-position: -450px 0;
+  }
+  100% {
+    background-position: 450px 0;
+  }
+}

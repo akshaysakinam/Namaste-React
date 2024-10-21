@@ -1,12 +1,29 @@
 
 import restaurantList from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
 
-    const [listOfRestaurants, setListOfRestaurants] = useState(restaurantList)
+    const [listOfRestaurants, setListOfRestaurants] = useState([])
     const [search, setSearch] = useState("")
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    const fetchData = async () => {
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.5641438&lng=78.4376862&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+
+        const json = await data.json()
+        console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants)
+        setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants)
+    }
+
+
 
     const filterRestaurants = (search, listOfRestaurants) => {
         let filteredRestaurants = listOfRestaurants.filter((restaurant) => {
@@ -34,9 +51,11 @@ const Body = () => {
         setListOfRestaurants(sortRestaurants)
     }
 
+    // if (listOfRestaurants.length === 0) {
+    //     return <Shimmer />
+    // } or
 
-
-    return (
+    return listOfRestaurants.length === 0 ? <Shimmer /> : (
         <div className="body">
             <div className="search-container">
                 <input
