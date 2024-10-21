@@ -201,7 +201,6 @@
 }
 
 .search-container::after {
-  content: "🔍";
   position: absolute;
   right: 15px;
   top: 50%;
@@ -221,4 +220,52 @@
 .filter-btn {
   margin: 8px;
   cursor: pointer;
+}
+
+/* Search Container */
+
+.search-container {
+  display: flex;
+  align-items: center; /* Vertically center align items */
+  justify-content: center; /* Center items horizontally */
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.search-input {
+  flex: 1; /* Takes up remaining space next to the button */
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 25px;
+  border: 2px solid #ddd;
+  outline: none;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.search-input:focus {
+  border-color: hsl(0, 0%, 0%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.796);
+}
+
+.search-container > button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  background-color: #ffbf00;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px; /* Space between the input and button */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.search-container > button:hover {
+  background-color: #ff9000;
+  transform: scale(1.05);
+}
+
+.search-container > button:active {
+  transform: scale(0.98);
 }
