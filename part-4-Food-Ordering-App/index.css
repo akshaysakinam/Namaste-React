@@ -445,3 +445,84 @@
     background-position: 450px 0;
   }
 }
+
+/* User-card-Class component */
+/* Card styling with a softer hover effect and subtle translation */
+.userclass-card {
+  background-color: #fff;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Initial subtle shadow */
+  padding: 20px;
+  margin: 20px;
+  max-width: 300px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.4s ease; /* Smoother transition for hover effect */
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0); /* No translation initially */
+}
+
+/* Card hover effect: Subtle border color and light shadow */
+.userclass-card:hover {
+  border: 2px solid #d1d1d1; /* Soft gray border */
+  transform: translateY(-10px); /* Slight translation upwards */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow */
+}
+
+/* Heading animations with a smooth fade-in effect */
+.userclass-card h2,
+.userclass-card h3,
+.userclass-card h4 {
+  margin: 10px 0;
+  position: relative;
+  color: #333;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn 1s forwards ease; /* Fade-in animation */
+}
+
+/* Delaying each heading animation for a smoother feel */
+.userclass-card h2 {
+  animation-delay: 0.2s;
+}
+
+.userclass-card h3 {
+  animation-delay: 0.4s;
+}
+
+.userclass-card h4 {
+  animation-delay: 0.6s;
+}
+
+/* Keyframe for the fade-in effect */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Softer border animation */
+.userclass-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 2px solid #d1d1d1; /* Subtle gray border */
+  opacity: 0;
+  transform: scale(1.2); /* Start larger */
+  transition: transform 0.4s ease, opacity 0.4s ease; /* Smooth transition */
+  z-index: -1;
+}
+
+/* On hover, the border animates in a subtle way */
+.userclass-card:hover::after {
+  opacity: 1;
+  transform: scale(1); /* Border comes to normal size */
+}
