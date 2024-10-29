@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,19 +8,42 @@ import Contact from "./components/Contact";
 import ErrorPage from "./components/ErrorPage";
 import Cart from "./components/Cart";
 import RestaurantMenu from "./components/RestaurantMenu";
-// import Grocery from "./components/Grocery";
+import UserContext from "./utils/UserContext";
+import DarkModeContext from "./utils/DarkModeContext";
 
-
-const Grocery = lazy(() => import("./components/Grocery"))
+// Lazy load the Grocery component
+const Grocery = lazy(() => import("./components/Grocery"));
 
 const App = () => {
+    const [userName, setUserName] = useState();
+    const [isDark, setIsDark] = useState(false);
+
+    useEffect(() => {
+        const data = {
+            name: "Akshay",
+        };
+        setUserName(data.name);
+    }, []);
+
+    const toggleDarkMode = () => {
+        setIsDark((prev) => !prev);
+    };
+
     return (
-        <div className="app">
-            <Header />
-            <Outlet />
-        </div>
-    )
-}
+        // <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        //     <div className="app">
+        //         <Header />
+        //         <Outlet />
+        //     </div>
+        // </UserContext.Provider>
+        <DarkModeContext.Provider value={{ isDarkMode: isDark, toggleDarkMode }}>
+            <div className={isDark ? "bg-gray-900 text-white" : "bg-white text-gray-800"}>
+                <Header />
+                <Outlet />
+            </div>
+        </DarkModeContext.Provider>
+    );
+};
 
 const appRouter = createBrowserRouter([
     {
@@ -29,38 +52,36 @@ const appRouter = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Body />
+                element: <Body />,
             },
             {
                 path: "/about",
-                element: <About />
+                element: <About />,
             },
             {
                 path: "/contact",
-                element: <Contact />
+                element: <Contact />,
             },
             {
                 path: "/grocery",
-                element: <Suspense fallback={
-                    <div>Loading...</div>
-                }><Grocery /></Suspense>
+                element: (
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Grocery />
+                    </Suspense>
+                ),
             },
             {
                 path: "/cart",
-                element: <Cart />
+                element: <Cart />,
             },
             {
                 path: "/restaurant/:id",
-                element: <RestaurantMenu />
+                element: <RestaurantMenu />,
             },
         ],
-
-        errorElement: <ErrorPage />
+        errorElement: <ErrorPage />,
     },
+]);
 
-])
-
-
-const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(<RouterProvider router={appRouter} />)
-
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={appRouter} />);
