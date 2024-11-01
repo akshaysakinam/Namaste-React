@@ -6,15 +6,16 @@ import { useContext, useState } from "react";
 import DarkModeContext from "../utils/DarkModeContext";
 
 const RestaurantMenu = () => {
-    const [showIndex, setShowIndex] = useState(null);
     const { id } = useParams();
+    const { isDarkMode } = useContext(DarkModeContext);
+    const [showIndex, setShowIndex] = useState(null);
     const resInfo = useRestaurantMenu(id);
 
     if (resInfo === null) {
         return <Shimmer />;
     }
 
-    const { isDarkMode } = useContext(DarkModeContext);
+
 
     const { name, cuisines, costForTwoMessage } = resInfo.cards[2].card.card.info;
     const itemCards =

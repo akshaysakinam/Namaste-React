@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import DarkModeContext from "../utils/DarkModeContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
     const [btnReact, setBtnReact] = useState("Login");
@@ -11,6 +12,10 @@ const Header = () => {
 
     const { loggedInUser } = useContext(UserContext);
     const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
+
+    //Subscribing to the store using a Selector
+    const cartItems = useSelector((store) => store.cart.items);
+
 
     return (
         <div className={`flex justify-between items-center py-2 px-10 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} shadow-md sticky top-0 z-50 transition-colors duration-300`}>
@@ -61,8 +66,8 @@ const Header = () => {
                         </Link>
                     </li>
                     <li className="relative transition-colors duration-300 hover:text-yellow-500">
-                        <Link to="/cart" className="text-sm font-semibold relative group">
-                            Cart
+                        <Link to="/cart" className="text-sm font-semibold relative group" >
+                            Cart - {`${cartItems.length} items`}
                             <span className="absolute bottom-[-5px] left-0 w-full h-[3px] bg-yellow-500 scale-x-0 origin-right group-hover:scale-x-100 transition-transform duration-300"></span>
                         </Link>
                     </li>

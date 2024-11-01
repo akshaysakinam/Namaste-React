@@ -22,3 +22,12 @@ components:
     -Links
     -SocialIcons
     -Copyright
+
+# Redux Toolkit
+
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to our app
+- slice(cardSlice)
+- dispatch(action)
+- Selector
